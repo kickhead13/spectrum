@@ -12,6 +12,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.global_position.x = player.global_position.x
-	self.global_position.y = player.global_position.y
-	self.global_position.z = player.global_position.z
+	#self.global_position.x = player.global_position.x
+	#self.global_position.y = player.global_position.y
+	#self.global_position.z = player.global_position.z
+	pass
