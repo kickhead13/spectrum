@@ -1,0 +1,162 @@
+[gd_scene load_steps=15 format=3 uid="uid://b42ay3idx2rwp"]
+
+[ext_resource type="Script" path="res://src/player.gd" id="1_3vdac"]
+[ext_resource type="Script" path="res://src/container_top.gd" id="1_27e44"]
+[ext_resource type="Script" path="res://src/world.gd" id="1_c4hhd"]
+[ext_resource type="Script" path="res://src/camera_3d.gd" id="1_dywat"]
+[ext_resource type="Script" path="res://src/container_bottom.gd" id="3_x1wbx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a67on"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qmv8n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c51s3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_loqpq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qk7tc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_alwdh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g075a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_54fcy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hc22i"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_c4hhd")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 323.0
+columns = 2
+script = ExtResource("1_27e44")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.86
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(574, 323)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="GridContainer/SubViewportContainer/SubViewport/Node3D"]
+script = ExtResource("1_dywat")
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(574, 323)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="GridContainer/SubViewportContainer2/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="GridContainer/SubViewportContainer2/SubViewport/Node3D"]
+script = ExtResource("1_dywat")
+
+[node name="GridContainer2" type="GridContainer" parent="."]
+offset_top = 327.0
+offset_right = 1152.0
+offset_bottom = 647.0
+columns = 2
+script = ExtResource("3_x1wbx")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer2/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(574, 320)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="GridContainer2/SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="GridContainer2/SubViewportContainer/SubViewport/Node3D"]
+script = ExtResource("1_dywat")
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer2/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(574, 320)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="GridContainer2/SubViewportContainer2/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="GridContainer2/SubViewportContainer2/SubViewport/Node3D"]
+script = ExtResource("1_dywat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.44695)
+physics_material_override = SubResource("PhysicsMaterial_a67on")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -24.7642)
+shape = SubResource("BoxShape3D_qmv8n")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.207382, 0, 2.58769)
+layers = 8
+mesh = SubResource("SphereMesh_c51s3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.0718309, -0.0695725, 0, 0.0695725, 0.0718309, 0.198731, 0, 2.58291)
+layers = 2
+mesh = SubResource("BoxMesh_loqpq")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.44695)
+physics_material_override = SubResource("PhysicsMaterial_a67on")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -24.7642)
+shape = SubResource("BoxShape3D_qmv8n")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D2/CollisionShape3D"]
+transform = Transform3D(0.3, 0, 0, 0, -0.0568365, -0.294567, 0, 0.294567, -0.0568365, 0.198731, 0.0291025, 2.21148)
+layers = 4
+mesh = SubResource("BoxMesh_qk7tc")
+skeleton = NodePath("../../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.14008, 89.8366, 281.38, 1.35702)
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(7.90007, 0, 0, 0, 1, 0, 0, 0, 16.0976, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(31.711, 0, 0, 0, 1, 0, 0, 0, 16.9441, 0, -1.87338, 0)
+shape = SubResource("BoxShape3D_alwdh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3/CollisionShape3D"]
+mesh = SubResource("BoxMesh_g075a")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_3vdac")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(0.804264, 0, 0, 0, 1.40299, 0, 0, 0, 0.801213, 0, 0.201215, 0)
+shape = SubResource("BoxShape3D_54fcy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_hc22i")
